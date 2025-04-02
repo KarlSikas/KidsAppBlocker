@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Custom styles for your app can go here. For example: -->
+
+    <!-- A simple style for a Button -->
+    <style name="CustomButton">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- A simple style for TextView -->
+    <style name="CustomTextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <!-- Add any other custom styles you might need -->
+
+</resources>

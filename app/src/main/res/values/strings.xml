@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kids App Blocker</string>
+
+    <!-- Description for various UI components -->
+    <string name="settings_title_desc">App Blocking Settings</string>
+    <string name="select_apps_to_block_desc">Select apps to block</string> <!-- Added this line -->
+    <string name="app_list_desc">List of installed apps with checkboxes to select for blocking</string>
+    <string name="save_blocked_apps_button_desc">Save the selected blocked apps</string>
+    <string name="app_icon_desc">App Icon</string>
+    <string name="app_name_desc">App Name</string>
+    <string name="block_checkbox_desc">Block App Checkbox</string>
+    <string name="block_google_play_desc">Checkbox to block Google Play Store</string>
+    <string name="include_system_apps_desc">Checkbox to include or exclude system apps from the list</string>
+</resources>

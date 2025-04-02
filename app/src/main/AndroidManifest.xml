@@ -1,0 +1,73 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.kidsappblocker">
+
+    <!-- Request permissions for usage stats monitoring -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+
+    <!-- Permission for receiving notifications (NotificationListenerService) -->
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+
+    <!-- Permission to write to external storage (optional, remove if not needed) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
+    <!-- Permission to read installed apps -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <!-- Declare the packages your app needs to query -->
+    <queries>
+        <package android:name="com.example.someapp1" />
+        <package android:name="com.example.someapp2" />
+        <!-- Add other packages as needed -->
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KidsAppBlocker">
+
+        <!-- MainActivity (Launcher Activity) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.KidsAppBlocker.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Other Activities (Setup, Login, etc.) -->
+        <activity
+            android:name=".SetupPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainScreenActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AppBlockSettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PasswordPromptActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" /> <!-- Dialog theme -->
+
+        <!-- AppBlockerService (Background service to block apps) -->
+        <service
+            android:name=".AppBlockerService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,16 +1,19 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    // Remove Firebase Crashlytics plugins
+    // id("com.google.gms.google-services")
+    // id("com.google.firebase.crashlytics")
 }
 
 android {
     namespace = "com.example.kidsappblocker"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.kidsappblocker"
         minSdk = 29
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -36,11 +39,21 @@ android {
 }
 
 dependencies {
+    implementation("androidx.core:core-ktx:1.10.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation ("org.slf4j:slf4j-api:1.7.32")
+    implementation ("ch.qos.logback:logback-classic:1.2.10")
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Remove Firebase Crashlytics dependencies
+    // implementation("com.google.firebase:firebase-crashlytics:18.2.6")
+    // implementation("com.google.firebase:firebase-analytics:21.3.0")
+    // implementation("com.google.firebase:firebase-core:21.1.1")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+
+// Remove Firebase Crashlytics plugins
+// apply(plugin = "com.google.gms.google-services")
+// apply(plugin = "com.google.firebase.crashlytics")

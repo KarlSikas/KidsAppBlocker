@@ -7,8 +7,8 @@ class MainScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_screen)  // Create the layout for this activity
+        setContentView(R.layout.activity_main_screen)
 
-        // You can add more functionality here, such as showing app statistics, etc.
+        // Additional functionality for MainScreenActivity
     }
 }

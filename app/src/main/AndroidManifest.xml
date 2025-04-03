@@ -4,17 +4,20 @@
     <!-- Request permissions for usage stats monitoring -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
 
-    <!-- Permission for receiving notifications (NotificationListenerService) -->
-    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+    <!-- Permission to launch activities from the background -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!-- Permission to write to external storage (optional, remove if not needed) -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <!-- Permission to receive boot completed action -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <!-- Permission to read installed apps -->
+    <!-- Permission to query all packages -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
     <!-- Declare the packages your app needs to query -->
     <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
         <package android:name="com.example.someapp1" />
         <package android:name="com.example.someapp2" />
         <!-- Add other packages as needed -->
@@ -68,6 +71,29 @@
             </intent-filter>
         </service>
 
-    </application>
+        <!-- Device Admin Receiver -->
+        <receiver
+            android:name=".YourDeviceAdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_receiver" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLED" />
+            </intent-filter>
+        </receiver>
 
+        <!-- Ensure the service starts on boot -->
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
 </manifest>

@@ -25,5 +25,4 @@
         android:layout_height="wrap_content"
         android:text="Settings"
         android:layout_marginTop="20dp"/>
-
 </LinearLayout>

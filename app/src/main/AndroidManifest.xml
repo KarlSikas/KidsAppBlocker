@@ -13,6 +13,9 @@
     <!-- Permission to query all packages -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
+    <!-- Permission for internet access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Declare the packages your app needs to query -->
     <queries>
         <intent>

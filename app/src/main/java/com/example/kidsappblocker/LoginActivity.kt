@@ -27,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
             val enteredPassword = passwordInput.text.toString()
             if (validatePassword(enteredPassword)) {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                // Redirect to the app selection activity instead of the main screen
                 startActivity(Intent(this, AppBlockSettingsActivity::class.java)) // Redirect to app selection screen
                 finish()
             } else {

@@ -28,6 +28,7 @@ class AppBlockerService : NotificationListenerService() {
         } else {
             Log.e(TAG, "Required permissions not granted")
             requestPermissions()
+            stopSelf() // Stop service if permissions are not granted
         }
     }
 

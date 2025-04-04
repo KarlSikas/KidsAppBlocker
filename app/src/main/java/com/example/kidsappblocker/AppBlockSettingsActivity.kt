@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 import android.content.ContentValues
 import android.os.Environment
 import android.provider.MediaStore
+import android.database.Cursor
 
 class AppBlockSettingsActivity : AppCompatActivity() {
 
@@ -91,7 +92,24 @@ class AppBlockSettingsActivity : AppCompatActivity() {
             // Ensure primary directory is set correctly
             put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS) // or Environment.DIRECTORY_DOCUMENTS
         }
-        val uri = contentResolver.insert(contentUri, values)
+
+        // Check if the file already exists
+        val cursor: Cursor? = contentResolver.query(
+            contentUri,
+            arrayOf(MediaStore.MediaColumns._ID),
+            "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH}=?",
+            arrayOf("example.txt", Environment.DIRECTORY_DOWNLOADS),
+            null
+        )
+
+        if (cursor != null && cursor.moveToFirst()) {
+            Log.d(TAG, "File already exists, skipping insertion")
+        } else {
+            val uri = contentResolver.insert(contentUri, values)
+            Log.d(TAG, "Inserted new file with URI: $uri")
+        }
+
+        cursor?.close()
     }
 
     override fun onStart() {
